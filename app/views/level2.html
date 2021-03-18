@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{data.label}}
+      </h1>
+		<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+			{% for item in level2 %}
+			<div class="govuk-accordion__section ">
+				<div class="govuk-accordion__section-header">
+					<h2 class="govuk-accordion__section-heading">
+							<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+							  {{item.label}}
+							</span>
+					</h2>
+				</div>
+				<div id="accordion-default-content-1" class="govuk-accordion__section-content"
+					 aria-labelledby="accordion-default-heading-1">
+					{% for link in item.items %}
+					<p><a href="{{link.url}}">{{link.label}}</a></p>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+    </div>
+  </div>
+
+{% endblock %}
