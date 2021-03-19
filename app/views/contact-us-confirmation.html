@@ -9,10 +9,69 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Thank you for contacting us
-      </h1>
-		<p>copy TBC</p>
+		<div class="govuk-panel govuk-panel--confirmation">
+			<h1 class="govuk-panel__title">Enquiry submitted</h1>
+			<div class="govuk-panel__body">
+				Your reference number is<br />
+				ENQW246226
+			</div>
+		</div>
+		<p>A confirmation email has been sent to {{data.emailAddress}}.</p>
+		<h2 class="govuk-heading-m">What you submitted</h2>
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Your name
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{{data.name}}</p>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Your email address
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{{data.emailAddress}}</p>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					What your enquiry is about
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{{data.enquiryType}}</p>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Details of your enquiry
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">{{data.enquiryDetails | escape | nl2br}}</p>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Country or territory
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">Brazil</p>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Submitted to
+				</dt>
+				<dd class="govuk-summary-list__value">
+					<p class="govuk-body">The British Consulate-General, São Paulo</p>
+				</dd>
+			</div>
+		</dl>
+		<p>If any of these details are wrong contact us on +55 (11) 3094 2700</p>
+		<h2 class="govuk-heading-m">What happens next</h2>
+		<p>We've sent your enquiry to a consular officer.</p>
+		<p>They will review your enquiry and normally respond in 1 to 3 days.</p>
     </div>
   </div>
 

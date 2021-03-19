@@ -13,7 +13,7 @@
         Contact us
       </h1>
 		<p>Don't include personal or financial information, eg your National Insurance number or credit card details.</p>
-		<form action="contact-us-confirmation" method="get">
+		<form action="contact-us-submit" method="post">
 		<div class="govuk-form-group">
 			<label class="govuk-label" for="name">
 				Your name
@@ -33,7 +33,7 @@
 				What is your enquiry about?
 			</label>
 			<input class="govuk-input govuk-!-width-one-half" id="enquiryType" name="enquiryType"
-				   type="email" spellcheck="false" value="">
+				   type="text" spellcheck="false" value="">
 		</div>
 		<div class="govuk-form-group">
 		<label class="govuk-label" for="enquiryDetails">
@@ -43,8 +43,7 @@
 				1200 characters or less
 			</div>
 		<textarea class="govuk-textarea" id="enquiryDetails" name="enquiryDetails" rows="10"
-				  aria-describedby="enquiryDetailsHint">
-		</textarea>
+				  aria-describedby="enquiryDetailsHint"></textarea>
 		</div>
 			<button class="govuk-button" data-module="govuk-button">Send</button>
 		</form>

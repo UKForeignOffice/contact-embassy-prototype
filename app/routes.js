@@ -16,6 +16,9 @@ router.post(UPLOADS_PATH, upload.single('csv'), (req, res, next) => {
   res.redirect(`/embassy?csv=${req.file.originalname}`)
 })
 
+router.post('/contact-us-submit', (req, res, next) => {
+  res.redirect('/contact-us-confirmation')
+})
 
 router.get('/level1', (req, res, next) => {
   if (req.session.data.csv) {
