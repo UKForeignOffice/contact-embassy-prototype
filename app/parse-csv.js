@@ -11,10 +11,11 @@ module.exports = buffer => {
     .map(val => {
       const level1Label = val[headers[0]];
       const level1Link = val[headers[1]];
-      const level2Label = val[headers[2]];
-      const level3Label = val[headers[3]];
-      const level3Link = val[headers[4]];
-      level2[level1Label] = level2[level1Label] || {}
+      const level2Title = val[headers[2]];
+      const level2Label = val[headers[3]];
+      const level3Label = val[headers[4]];
+      const level3Link = val[headers[5]];
+      level2[level1Label] = level2[level1Label] || { title: level2Title }
       level2[level1Label][level2Label] = level2[level1Label][level2Label] || []
       level2[level1Label][level2Label].push({ label: level3Label, url: level3Link})
       return { label: level1Label, link: level1Link }

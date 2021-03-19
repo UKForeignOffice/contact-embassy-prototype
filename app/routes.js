@@ -10,10 +10,14 @@ router.post('/uploads', upload.single('csv'), (req, res, next) => {
 })
 
 router.get('/level2', (req, res, next) => {
-  res.locals.level2 = Object.keys(req.session.data.levels.level2[req.query.label]).map(key => ({
-    label: key,
-    items: req.session.data.levels.level2[req.query.label][key]
-  }))
+  const {title, ...level2Items} = req.session.data.levels.level2[req.query.label]
+  res.locals.level2 = {
+    title,
+    items: Object.keys(level2Items).map(key => ({
+      label: key,
+      items: req.session.data.levels.level2[req.query.label][key]
+    }))
+  }
   next()
 })
 module.exports = router

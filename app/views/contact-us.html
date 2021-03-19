@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Contact us
+      </h1>
+		<p>Don't include personal or financial information, eg your National Insurance number or credit card details.</p>
+		<form action="contact-us-confirmation" method="get">
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="name">
+				Your name
+			</label>
+			<input class="govuk-input govuk-!-width-one-half" id="name" name="name"
+				   type="text" spellcheck="false" value="" wi>
+		</div>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="emailAddress">
+				Your email address
+			</label>
+			<input class="govuk-input govuk-!-width-one-half" id="emailAddress" name="emailAddress"
+				   type="email" spellcheck="false" value="">
+		</div>
+		<div class="govuk-form-group">
+			<label class="govuk-label" for="enquiryType">
+				What is your enquiry about?
+			</label>
+			<input class="govuk-input govuk-!-width-one-half" id="enquiryType" name="enquiryType"
+				   type="email" spellcheck="false" value="">
+		</div>
+		<div class="govuk-form-group">
+		<label class="govuk-label" for="enquiryDetails">
+			Details of your enquiry
+		</label>
+			<div id="enquiryDetailsHint" class="govuk-hint">
+				1200 characters or less
+			</div>
+		<textarea class="govuk-textarea" id="enquiryDetails" name="enquiryDetails" rows="10"
+				  aria-describedby="enquiryDetailsHint">
+		</textarea>
+		</div>
+			<button class="govuk-button" data-module="govuk-button">Send</button>
+		</form>
+    </div>
+  </div>
+
+{% endblock %}
