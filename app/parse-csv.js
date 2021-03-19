@@ -1,7 +1,6 @@
 const Papa = require('papaparse');
 
-module.exports = buffer => {
-  const csv = buffer.toString('utf8')
+module.exports = csv => {
   const results = Papa.parse(csv, {
     header: true
   });

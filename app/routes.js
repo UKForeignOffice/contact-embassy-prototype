@@ -1,12 +1,31 @@
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
-const upload = multer()
+const fs = require('fs')
+const storage = multer.diskStorage({
+  destination: 'uploads/',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+const upload = multer({ storage })
 const parseCsv = require('./parse-csv')
+const UPLOADS_PATH = '/uploads'
 
-router.post('/uploads', upload.single('csv'), (req, res, next) => {
-  req.session.data.levels = parseCsv(req.file.buffer)
-  res.redirect('/level1')
+router.post(UPLOADS_PATH, upload.single('csv'), (req, res, next) => {
+  res.redirect(`/level1?csv=${req.file.originalname}`)
+})
+
+
+router.get('/level1', (req, res, next) => {
+  if (req.query.csv) {
+    const data = fs.readFileSync(`./${UPLOADS_PATH}/${req.query.csv}`, 'utf8')
+    res.locals.levels = parseCsv(data)
+    req.session.data.levels = res.locals.levels
+    next()
+  } else {
+    res.redirect('/error-csv')
+  }
 })
 
 router.get('/level2', (req, res, next) => {

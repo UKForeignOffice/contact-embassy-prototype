@@ -10,13 +10,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        What do you need help with?
+        CSV file missing
       </h1>
-		{% for item in levels.level1 %}
-		<p><a href="{% if item.link %}{{item.link}}{% else %}/level2?label={{item.label}}{% endif %}">{{item.label}}</a></p>
-		{% endfor %}
 
-		{% include "includes/link_to_contact_form.html" %}
+
     </div>
   </div>
 
