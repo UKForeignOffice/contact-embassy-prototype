@@ -13,13 +13,13 @@ const parseCsv = require('./parse-csv')
 const UPLOADS_PATH = '/uploads'
 
 router.post(UPLOADS_PATH, upload.single('csv'), (req, res, next) => {
-  res.redirect(`/level1?csv=${req.file.originalname}`)
+  res.redirect(`/embassy?csv=${req.file.originalname}`)
 })
 
 
 router.get('/level1', (req, res, next) => {
-  if (req.query.csv) {
-    const data = fs.readFileSync(`./${UPLOADS_PATH}/${req.query.csv}`, 'utf8')
+  if (req.session.data.csv) {
+    const data = fs.readFileSync(`./${UPLOADS_PATH}/${req.session.data.csv}`, 'utf8')
     res.locals.levels = parseCsv(data)
     req.session.data.levels = res.locals.levels
     next()
