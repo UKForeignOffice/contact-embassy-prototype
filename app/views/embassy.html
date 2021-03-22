@@ -288,7 +288,7 @@
 									<p>See also our <a href="https://www.gov.uk/guidance/travel-advice-novel-coronavirus" class="govuk-link">coronavirus travel advice</a> for all our latest guidance on travel during coronavirus.</p>
 								</div>
 
-								<p>If you’re in Sao Paulo and you need advice which is not covered by reading our travel advice then you can <a href="/level1" class="govuk-link">contact us online</a>.</p>
+								<p>If you’re in Sao Paulo and you need advice which is not covered by reading our travel advice then you can <a href="{% if data.test == 'a'%}/level1{% else %}/contact-us-start{% endif %}" class="govuk-link">contact us online</a>.</p>
 
 								<p>If you’re in São Paulo and you need urgent help (for example, you’ve been attacked, arrested or someone has died), call +55 11 3094 2700.</p>
 
