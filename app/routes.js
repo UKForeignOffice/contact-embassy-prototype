@@ -13,7 +13,7 @@ const parseCsv = require('./parse-csv')
 const UPLOADS_PATH = '/uploads'
 
 router.post(UPLOADS_PATH, upload.single('csv'), (req, res, next) => {
-  res.redirect(`/embassy?csv=${req.file.originalname}`)
+  res.redirect(`/embassy?csv=${req.file.originalname}&test=a`)
 })
 
 router.post('/contact-us-submit', (req, res, next) => {
