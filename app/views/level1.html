@@ -7,15 +7,38 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        What do you need help with?
-      </h1>
-		{% for item in levels.level1 %}
-		<p><a href="{% if item.link %}{{item.link}}{% else %}/level2?label={{item.label}}{% endif %}">{{item.label}}</a></p>
-		{% endfor %}
 
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full-from-desktop">
+		<h1 class="govuk-heading-xl">
+			Help for British Nationals in France
+		</h1>
+
+	</div>
+</div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+		<p>Many queries are covered by advice published on GOV.UK.</p>
+		<p>What is your enquiry about?</p>
+		<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+			{% for group, items in levels %}
+			<div class="govuk-accordion__section ">
+				<div class="govuk-accordion__section-header">
+					<h2 class="govuk-accordion__section-heading">
+						<span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+						  {{group}}
+						</span>
+					</h2>
+				</div>
+				<div id="accordion-default-content-1" class="govuk-accordion__section-content"
+					 aria-labelledby="accordion-default-heading-1">
+					{% for item in items %}
+					<p><a href="{{item.link}}">{{item.label}}</a></p>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 		{% include "includes/link_to_contact_form.html" %}
     </div>
   </div>

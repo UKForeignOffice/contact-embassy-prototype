@@ -12,34 +12,31 @@ const upload = multer({ storage })
 const parseCsv = require('./parse-csv')
 const UPLOADS_PATH = '/uploads'
 
+let levels;
+
 router.post(UPLOADS_PATH, upload.single('csv'), (req, res, next) => {
-  res.redirect(`/embassy?csv=${req.file.originalname}&test=a`)
+  res.redirect(`/embassy?csv=${req.file.originalname}`)
 })
 
 router.post('/contact-us-submit', (req, res, next) => {
   res.redirect('/contact-us-confirmation')
 })
 
-router.get('/level1', (req, res, next) => {
+router.get('/embassy', (req, res, next) => {
   if (req.session.data.csv) {
     const data = fs.readFileSync(`./${UPLOADS_PATH}/${req.session.data.csv}`, 'utf8')
-    res.locals.levels = parseCsv(data)
-    req.session.data.levels = res.locals.levels
+    levels = parseCsv(data)
     next()
   } else {
     res.redirect('/error-csv')
   }
 })
 
-router.get('/level2', (req, res, next) => {
-  const {title, ...level2Items} = req.session.data.levels.level2[req.query.label]
-  res.locals.level2 = {
-    title,
-    items: Object.keys(level2Items).map(key => ({
-      label: key,
-      items: req.session.data.levels.level2[req.query.label][key]
-    }))
+router.get('/level1', (req, res, next) => {
+  if (levels) {
+    res.locals.levels = levels;
   }
-  next()
+  next();
 })
+
 module.exports = router
